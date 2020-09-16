@@ -3,17 +3,19 @@ jQuery(document).ready(function(){
     // TODO: ALLOW FOR SCRUBBING BACKWARDS
     // TODO: FIX BUG THAT HIGHLIGHTS THE INCORRECT VERSION OF THE WORD
     // TODO: IMPLEMENT ANIMATIONS
+    // TODO: FIX BUG THAT SKIPS OVER WORDS
+    // TODO: FIX BUG THAT STOPS LOADING WORDS AFTER THIRD ROUND
 
     let words = [];
     let currentWords = [];
     let currentWord = "";
-    let lowRange = 0;
-    let highRange = 50;
+    let lowerLimit = 0;
+    let higherLimit = 50;
 
     // Fetch data and attach to DOM
     $.getJSON("metadata.json", function(data) {
         words = data.metadata.asr_word;
-        currentWords = words.slice(lowRange, highRange);
+        currentWords = words.slice(lowerLimit, higherLimit);
         currentWords.forEach(word =>
             $(".words").append(word.word + ' '));
     });
@@ -46,11 +48,11 @@ jQuery(document).ready(function(){
     // Update text blurb
     function updateTextBlurb(){
         $(".words").empty();
-        lowRange = lowRange + 50;
-        highRange = highRange + 50;
+        lowerLimit = lowerLimit + 50;
+        higherLimit = higherLimit + 50;
         $.getJSON("metadata.json", function(data) {
             words = data.metadata.asr_word;
-            currentWords = words.slice(lowRange, highRange);
+            currentWords = words.slice(lowerLimit, higherLimit);
             currentWords.forEach(word =>
             $(".words").append(word.word + ' '));
         });
