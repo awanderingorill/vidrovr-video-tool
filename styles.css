@@ -39,7 +39,7 @@ strong {
     color: #2A7BF7;
 }
 
-.words, .named-entities, .onscreen-text {
+.words, .other-metadata {
     padding-bottom: 2em;
     margin: 0;
 }

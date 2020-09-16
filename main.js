@@ -1,5 +1,9 @@
 jQuery(document).ready(function(){ 
 
+    // TODO: ALLOW FOR SCRUBBING BACKWARDS
+    // TODO: FIX BUG THAT HIGHLIGHTS THE INCORRECT VERSION OF THE WORD
+    // TODO: IMPLEMENT ANIMATIONS
+
     let words = [];
     let currentWords = [];
     let currentWord = "";
@@ -24,7 +28,8 @@ jQuery(document).ready(function(){
     // Highlight current word
     function highlightCurrentWord(currentTime){
         let lastWordIndex = currentWords.length - 1;
-        currentWords.forEach((word) => {
+        currentWords.forEach((word, index) => {
+            console.log(index);
             if (currentTime >= word.start && currentTime <= word.end){
                 currentWord = word.word;
                 $(".words:contains('"+currentWord+"')").each( function( i, element ) {
@@ -48,7 +53,7 @@ jQuery(document).ready(function(){
             words = data.metadata.asr_word;
             currentWords = words.slice(lowRange, highRange);
             currentWords.forEach(word =>
-            $(".words").append(word.word + ' '));
+            $(".words").append(word.word + ' ').fadeIn());
         });
     }
 
