@@ -30,7 +30,8 @@ jQuery(document).ready(function(){
     // Highlight current word
     function highlightCurrentWord(currentTime){
         currentWords.forEach((word, index) => {
-            if (currentTime >= word.start && currentTime <= word.end){
+            let tolerance = 0.2;
+            if (currentTime >= word.start - tolerance && currentTime <= word.end + tolerance){
                 currentWord = word.word;
                 $(".words").each(function(i, element) {
                     let content = $(element).text();
@@ -41,6 +42,7 @@ jQuery(document).ready(function(){
                if (index + 1 === currentWords.length){
                    updateTextBlurb();
                }
+               return;
             }
         })
     }
