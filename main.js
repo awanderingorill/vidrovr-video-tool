@@ -27,19 +27,18 @@ jQuery(document).ready(function(){
 
     // Highlight current word
     function highlightCurrentWord(currentTime){
-        let lastWordIndex = currentWords.length - 1;
         currentWords.forEach((word, index) => {
-            console.log(index);
             if (currentTime >= word.start && currentTime <= word.end){
                 currentWord = word.word;
-                $(".words:contains('"+currentWord+"')").each( function( i, element ) {
+                $(".words").each(function(i, element) {
                     var content = $(element).text();
-                    content = content.replace( currentWord, '<strong>' + currentWord + '</strong>' );
+                    content = content.replace(currentWord, '<strong>' + currentWord + '</strong>');
                     $(element).html(content);
                });
-               if (currentWord === currentWords[lastWordIndex].word) {
-                    updateTextBlurb();
-                }
+                // If it's the last word, update the text blurb 
+               if (index + 1 === currentWords.length){
+                   updateTextBlurb();
+               }
             }
         })
     }
@@ -53,7 +52,7 @@ jQuery(document).ready(function(){
             words = data.metadata.asr_word;
             currentWords = words.slice(lowRange, highRange);
             currentWords.forEach(word =>
-            $(".words").append(word.word + ' ').fadeIn());
+            $(".words").append(word.word + ' '));
         });
     }
 
