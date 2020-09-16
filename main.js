@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
             if (currentTime >= word.start && currentTime <= word.end){
                 currentWord = word.word;
                 $(".words").each(function(i, element) {
-                    var content = $(element).text();
+                    let content = $(element).text();
                     content = content.replace(currentWord, "<strong>" + currentWord + "</strong>");
                     $(element).html(content);
                });
