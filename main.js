@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
         words = data.metadata.asr_word;
         currentWords = words.slice(lowerLimit, higherLimit);
         currentWords.forEach(word =>
-            $(".words").append(word.word + ' '));
+            $(".words").append(word.word + " "));
     });
 
     // Create event listener for video
@@ -54,7 +54,7 @@ jQuery(document).ready(function(){
             words = data.metadata.asr_word;
             currentWords = words.slice(lowerLimit, higherLimit);
             currentWords.forEach(word =>
-            $(".words").append(word.word + ' '));
+            $(".words").append(word.word + " "));
         });
     }
 
