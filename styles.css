@@ -34,3 +34,7 @@ video {
     font-weight: 700;
     margin: 0;
 }
+
+strong {
+    color: #2A7BF7;
+}

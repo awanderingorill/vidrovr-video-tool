@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){ 
 
     let words = [];
-    let currentWord = '';
+    let currentWord = "";
 
     $.getJSON( "metadata.json", function( data ) {
         words = data.metadata.asr_word;
@@ -18,7 +18,15 @@ jQuery(document).ready(function(){
     function onTrackedVideoFrame(currentTime){
         words.forEach((word) => {
             if (currentTime >= word.start && currentTime <= word.end){
-                $(".current-word").html(word.word);
+                currentWord = word.word;
+                $(".words:contains('"+currentWord+"')").each( function( i, element ) {
+                    var content = $(element).text();
+                    content = content.replace( currentWord, '<strong>' + currentWord + '</strong>' );
+                    $(element).html(content);
+               });
+                // $(".words").replace(word.word, "<strong> + word.word + </strong>");
+                // currentWord = word.word;
+                // $(".current-word").html(currentWord);
             }
         })
     }
