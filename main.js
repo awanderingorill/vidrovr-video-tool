@@ -34,7 +34,7 @@ jQuery(document).ready(function(){
                 currentWord = word.word;
                 $(".words").each(function(i, element) {
                     var content = $(element).text();
-                    content = content.replace(currentWord, '<strong>' + currentWord + '</strong>');
+                    content = content.replace(currentWord, "<strong>" + currentWord + "</strong>");
                     $(element).html(content);
                });
                 // If it's the last word, update the text blurb 
