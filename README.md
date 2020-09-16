@@ -1,3 +1,3 @@
 # vidrovr-video-tool
 
-To run, run `python -m SimpleHTTPServer` from the command line!
+To run, type `python -m SimpleHTTPServer` in the command line!
