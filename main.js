@@ -33,14 +33,7 @@ jQuery(document).ready(function(){
                     $(element).html(content);
                });
                if (currentWord === currentWords[lastWordIndex].word) {
-                    lowRange = lowRange + 50;
-                    highRange = highRange + 50;
-                    $.getJSON("metadata.json", function(data) {
-                        words = data.metadata.asr_word;
-                        currentWords = words.slice(lowRange, highRange);
-                        currentWords.forEach(word =>
-                            $(".words").append(word.word + ' '));
-                    });
+                    updateTextBlurb();
                 }
             }
         })
@@ -48,7 +41,15 @@ jQuery(document).ready(function(){
 
     // Update text blurb
     function updateTextBlurb(){
-        console.log("hello");
+        $(".words").empty();
+        lowRange = lowRange + 50;
+        highRange = highRange + 50;
+        $.getJSON("metadata.json", function(data) {
+            words = data.metadata.asr_word;
+            currentWords = words.slice(lowRange, highRange);
+            currentWords.forEach(word =>
+            $(".words").append(word.word + ' '));
+        });
     }
 
 });

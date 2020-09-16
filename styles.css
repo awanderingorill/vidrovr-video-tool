@@ -24,11 +24,11 @@ video {
     width: 60vw;
 }
 
-.words-wrapper {
+.data-item-wrapper {
     padding-left: 2em;
 }
 
-.words-title {
+.data-title {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
@@ -37,4 +37,9 @@ video {
 
 strong {
     color: #2A7BF7;
+}
+
+.words, .named-entities, .onscreen-text {
+    padding-bottom: 2em;
+    margin: 0;
 }
